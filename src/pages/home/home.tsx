@@ -21,7 +21,6 @@ export const Home: React.FC = () => {
   return (
     <StyledMainWrapper>
       <StyledDescription variant="h1">Star Wars</StyledDescription>
-
       <StyledStarWarsWrapper>
         {isLoading ? (
           <StyledSkeletonWrapper>
@@ -32,7 +31,7 @@ export const Home: React.FC = () => {
         ) : (
           <>
             {data?.results
-              .sort((a, b) => collator.compare(a.crew, b.crew))
+              .sort((currentItem, nextItem) => collator.compare(currentItem.crew, nextItem.crew))
               .map((item, index) => (
                 <StyledStarWarsItem key={index}>
                   <StyledStarWarsSection>
