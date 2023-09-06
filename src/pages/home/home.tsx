@@ -12,8 +12,7 @@ import {
   StyledSkeletonWrapper,
 } from './home.styled';
 import { useHome } from '../../api';
-
-const collator = new Intl.Collator(undefined, { numeric: true, sensitivity: 'base' });
+import { collator, createArrayPlaceHolder } from '../../shared';
 
 export const Home: React.FC = () => {
   const { data, isLoading } = useHome();
@@ -24,7 +23,7 @@ export const Home: React.FC = () => {
       <StyledStarWarsWrapper>
         {isLoading ? (
           <StyledSkeletonWrapper>
-            {Array.from({ length: 10 }).map((_, index) => (
+            {createArrayPlaceHolder(10).map((_, index) => (
               <StyledSkeleton key={index} />
             ))}
           </StyledSkeletonWrapper>
